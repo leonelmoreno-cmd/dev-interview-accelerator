@@ -33,7 +33,6 @@ Puedes usar "Buscar y reemplazar" en tu editor sobre **todos los archivos**:
 | Buscar                                      | Reemplazar por                          |
 |---------------------------------------------|-----------------------------------------|
 | `[Nombre legal de la empresa / profesional]`| Tu razón social o nombre profesional    |
-| `[RUC / NIT / EIN]`                          | Tu identificación fiscal                |
 | `[Ciudad, País]`                             | Tu domicilio fiscal                     |
 | `[País / jurisdicción]`                      | Tu jurisdicción legal                   |
 | `hola@tu-dominio.com`                        | Tu correo profesional real              |

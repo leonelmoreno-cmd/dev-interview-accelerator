@@ -24,9 +24,8 @@ siguiendo la columna "Dónde aparece").
 
 | # | Dato | Placeholder actual | Dónde aparece | Notas |
 |---|------|--------------------|---------------|-------|
-| 1 | **EIN** (ID fiscal de la LLC) | `[RUC / NIT / EIN]` | `terms.html`, footer de `index.html` | Número EIN que asigna el IRS a la empresa. |
-| 2 | **Dominio real del sitio** | `tu-dominio.com` | `index.html` (canonical + Open Graph), `robots.txt`, `sitemap.xml` | ¿Será `conversionforcellc.com` o un subdominio como `programa.conversionforcellc.com`? |
-| 3 | **WhatsApp Business** | `10000000000` | Botón CTA final + footer de `index.html` | Formato internacional sin `+` ni espacios. Ej: `13055551234` (EE. UU. = 1 + número). |
+| 1 | **Dominio real del sitio** | `tu-dominio.com` | `index.html` (canonical + Open Graph), `robots.txt`, `sitemap.xml` | ¿Será `conversionforcellc.com` o un subdominio como `programa.conversionforcellc.com`? |
+| 2 | **WhatsApp Business** | `10000000000` | Botón CTA final + footer de `index.html` | Formato internacional sin `+` ni espacios. Ej: `13055551234` (EE. UU. = 1 + número). |
 
 ---
 
@@ -45,7 +44,6 @@ siguiendo la columna "Dónde aparece").
 En tu editor, busca y reemplaza en todo el proyecto:
 
 ```
-[RUC / NIT / EIN]   →   tu EIN real
 tu-dominio.com      →   tu dominio real
 10000000000         →   tu WhatsApp (formato internacional)
 ```
