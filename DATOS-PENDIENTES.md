@@ -53,7 +53,7 @@ Luego:
 ```bash
 cd dev-interview-accelerator
 git add -A
-git commit -m "content: completar EIN, dominio y WhatsApp"
+git commit -m "content: completar dominio y WhatsApp"
 git push
 ```
 
