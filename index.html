@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ============================================================
+       SEO / METADATOS  (ajusta dominio, marca y textos)
+       ============================================================ -->
+  <title>The Dev Interview Accelerator — Preparación ejecutiva para entrevistas tech en inglés</title>
+  <meta name="description" content="Programa intensivo 1 a 1 de inglés técnico y preparación estratégica para entrevistas en empresas tecnológicas de EE. UU. y Europa. Para Software Engineers, Data Scientists, PMs y DevOps de Latinoamérica." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tu-dominio.com/" />
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The Dev Interview Accelerator" />
+  <meta property="og:description" content="Preparación ejecutiva 1 a 1 para superar entrevistas técnicas en inglés y acceder a roles remotos globales." />
+  <meta property="og:url" content="https://tu-dominio.com/" />
+  <meta property="og:image" content="https://tu-dominio.com/og-image.png" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%9A%80</text></svg>" />
+
+  <!-- Tipografía Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS v3 (CDN) -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              // Acentos principales de la marca
+              indigo: '#6366f1',
+              emerald: '#10b981',
+            },
+          },
+          container: {
+            center: true,
+            padding: '1.25rem',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Pequeños detalles que Tailwind CDN no cubre cómodamente */
+    html { -webkit-tap-highlight-color: transparent; }
+    body { font-feature-settings: 'cv02','cv03','cv04','cv11'; }
+    ::selection { background: #6366f1; color: #fff; }
+
+    /* Grid decorativo de fondo del hero */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(148,163,184,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148,163,184,.06) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+
+    /* Acordeón FAQ */
+    .faq-panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-item[open-panel] .faq-panel { }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .faq-panel { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-indigo">
+
+  <!-- Barra superior de confianza -->
+  <div class="w-full bg-slate-900/80 border-b border-white/5 text-xs sm:text-sm text-slate-400">
+    <div class="container mx-auto flex items-center justify-center gap-2 py-2 text-center">
+      <span class="inline-flex h-1.5 w-1.5 rounded-full bg-brand-emerald animate-pulse"></span>
+      Formación 100% remota &middot; Cupos limitados por cohorte &middot; Pagos seguros con Stripe &amp; PayPal
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HEADER / NAVBAR
+       ============================================================ -->
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-lg">
+    <nav class="container mx-auto flex items-center justify-between py-4" aria-label="Principal">
+      <!-- Logo tipográfico -->
+      <a href="#top" class="group flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-indigo to-brand-emerald font-black text-white shadow-lg shadow-indigo-500/20">D</span>
+        <span class="text-lg font-extrabold tracking-tight text-white">
+          Dev<span class="text-brand-indigo">Interview</span>
+          <span class="hidden sm:inline text-slate-500 font-medium">Accelerator</span>
+        </span>
+      </a>
+
+      <!-- Enlaces desktop -->
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#programa" class="text-sm font-medium text-slate-300 transition hover:text-white">Programa</a>
+        <a href="#metodologia" class="text-sm font-medium text-slate-300 transition hover:text-white">Metodología</a>
+        <a href="#planes" class="text-sm font-medium text-slate-300 transition hover:text-white">Planes</a>
+        <a href="#faq" class="text-sm font-medium text-slate-300 transition hover:text-white">Preguntas Frecuentes</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#planes"
+           class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-brand-indigo px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-500">
+          <i data-lucide="calendar-check" class="h-4 w-4"></i>
+          Agendar Sesión de Diagnóstico
+        </a>
+
+        <!-- Botón menú móvil -->
+        <button id="menuBtn" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-slate-200 md:hidden"
+                aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden border-t border-white/5 bg-slate-950 md:hidden">
+      <div class="container mx-auto flex flex-col gap-1 py-4">
+        <a href="#programa" class="rounded-lg px-3 py-2.5 text-slate-200 hover:bg-white/5">Programa</a>
+        <a href="#metodologia" class="rounded-lg px-3 py-2.5 text-slate-200 hover:bg-white/5">Metodología</a>
+        <a href="#planes" class="rounded-lg px-3 py-2.5 text-slate-200 hover:bg-white/5">Planes</a>
+        <a href="#faq" class="rounded-lg px-3 py-2.5 text-slate-200 hover:bg-white/5">Preguntas Frecuentes</a>
+        <a href="#planes" class="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-indigo px-4 py-3 font-semibold text-white">
+          <i data-lucide="calendar-check" class="h-4 w-4"></i> Agendar Sesión de Diagnóstico
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid"></div>
+      <div class="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-brand-indigo/20 blur-[120px]"></div>
+      <div class="pointer-events-none absolute top-20 right-0 h-[400px] w-[400px] rounded-full bg-brand-emerald/10 blur-[120px]"></div>
+
+      <div class="container relative mx-auto grid items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
+        <div>
+          <!-- Badge -->
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-slate-200">
+            <i data-lucide="user-round-check" class="h-3.5 w-3.5 text-brand-emerald"></i>
+            Formación 1 a 1 para Profesionales Tech
+          </span>
+
+          <h1 class="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl xl:text-6xl">
+            Supera tus entrevistas técnicas en inglés y accede a
+            <span class="bg-gradient-to-r from-brand-indigo to-brand-emerald bg-clip-text text-transparent">roles remotos globales</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">
+            No es un curso de inglés más. Es un entrenamiento ejecutivo e intensivo, diseñado para que
+            comuniques tu experiencia técnica con precisión, resuelvas <em>live coding talk-throughs</em> y
+            domines rondas de <em>System Design</em> y <em>behavioral</em> en empresas de EE. UU. y Europa.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#planes"
+               class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-indigo px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-500">
+              Postular al Programa <i data-lucide="arrow-right" class="h-5 w-5"></i>
+            </a>
+            <a href="#metodologia"
+               class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/10">
+              <i data-lucide="play" class="h-4 w-4"></i> Ver Metodología
+            </a>
+          </div>
+
+          <!-- Mini prueba social -->
+          <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-slate-400">
+            <div class="flex items-center gap-2"><i data-lucide="languages" class="h-4 w-4 text-brand-emerald"></i> Inglés técnico aplicado</div>
+            <div class="flex items-center gap-2"><i data-lucide="video" class="h-4 w-4 text-brand-emerald"></i> Mock interviews reales</div>
+            <div class="flex items-center gap-2"><i data-lucide="shield-check" class="h-4 w-4 text-brand-emerald"></i> Garantía de acompañamiento</div>
+          </div>
+        </div>
+
+        <!-- Tarjeta visual del hero -->
+        <div class="relative">
+          <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-6 shadow-2xl backdrop-blur">
+            <div class="flex items-center gap-2 border-b border-white/5 pb-4">
+              <span class="h-3 w-3 rounded-full bg-red-400/70"></span>
+              <span class="h-3 w-3 rounded-full bg-yellow-400/70"></span>
+              <span class="h-3 w-3 rounded-full bg-green-400/70"></span>
+              <span class="ml-3 text-xs text-slate-500">mock-interview · session 04</span>
+            </div>
+            <div class="space-y-4 pt-5 text-sm">
+              <div class="flex gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-indigo/20 text-xs font-bold text-brand-indigo">IN</span>
+                <p class="rounded-xl rounded-tl-none bg-white/5 px-4 py-3 text-slate-300">
+                  "Walk me through how you'd design a rate limiter for our API…"
+                </p>
+              </div>
+              <div class="flex flex-row-reverse gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-emerald/20 text-xs font-bold text-brand-emerald">YOU</span>
+                <p class="rounded-xl rounded-tr-none bg-brand-emerald/10 px-4 py-3 text-slate-200">
+                  "Sure. I'd start by clarifying the constraints, then compare a token bucket vs. a sliding window…"
+                </p>
+              </div>
+              <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/60 p-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Feedback del coach</p>
+                <ul class="mt-2 space-y-1.5 text-slate-400">
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-brand-emerald"></i> Estructura STAR clara</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-brand-emerald"></i> Vocabulario técnico preciso</li>
+                  <li class="flex items-center gap-2"><i data-lucide="arrow-up-right" class="h-4 w-4 text-brand-indigo"></i> Mejorar fluidez en trade-offs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -right-4 hidden rounded-xl border border-white/10 bg-slate-900 px-4 py-3 shadow-xl sm:block">
+            <p class="text-xs text-slate-500">Nivel comunicativo</p>
+            <p class="text-lg font-bold text-white">B1 <i data-lucide="move-right" class="inline h-4 w-4 text-brand-emerald"></i> C1</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROBLEMA / SOLUCIÓN
+         ============================================================ -->
+    <section id="metodologia" class="border-y border-white/5 bg-slate-900/30 py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-indigo">El enfoque</p>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            El problema no es tu inglés. Es cómo lo aplicas bajo presión técnica.
+          </h2>
+          <p class="mt-4 text-lg text-slate-400">
+            Sabes programar. El reto es comunicar decisiones de arquitectura, defender trade-offs y
+            contar tu impacto en inglés durante una entrevista real.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
+          <!-- Tradicional -->
+          <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-8">
+            <div class="flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-red-500/10 text-red-400"><i data-lucide="book-x" class="h-5 w-5"></i></span>
+              <h3 class="text-xl font-bold text-white">Clases de inglés tradicionales</h3>
+            </div>
+            <ul class="mt-6 space-y-4 text-slate-400">
+              <li class="flex gap-3"><i data-lucide="x" class="mt-0.5 h-5 w-5 shrink-0 text-red-400/80"></i> Gramática y temas genéricos sin contexto técnico.</li>
+              <li class="flex gap-3"><i data-lucide="x" class="mt-0.5 h-5 w-5 shrink-0 text-red-400/80"></i> Cero práctica de entrevistas ni <em>system design</em>.</li>
+              <li class="flex gap-3"><i data-lucide="x" class="mt-0.5 h-5 w-5 shrink-0 text-red-400/80"></i> Profesores sin experiencia en el sector tech.</li>
+              <li class="flex gap-3"><i data-lucide="x" class="mt-0.5 h-5 w-5 shrink-0 text-red-400/80"></i> Progreso lento y sin foco en un objetivo de carrera.</li>
+            </ul>
+          </div>
+
+          <!-- Nuestro entrenamiento -->
+          <div class="relative rounded-2xl border border-brand-emerald/30 bg-gradient-to-b from-brand-emerald/10 to-transparent p-8 shadow-xl shadow-emerald-500/5">
+            <span class="absolute -top-3 right-6 rounded-full bg-brand-emerald px-3 py-1 text-xs font-bold text-slate-950">Nuestro método</span>
+            <div class="flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-emerald/15 text-brand-emerald"><i data-lucide="target" class="h-5 w-5"></i></span>
+              <h3 class="text-xl font-bold text-white">Entrenamiento especializado Tech</h3>
+            </div>
+            <ul class="mt-6 space-y-4 text-slate-200">
+              <li class="flex gap-3"><i data-lucide="check" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Simulación de <strong>live coding talk-throughs</strong>.</li>
+              <li class="flex gap-3"><i data-lucide="check" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Preparación de preguntas de <strong>System Design</strong>.</li>
+              <li class="flex gap-3"><i data-lucide="check" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Historias de comportamiento con <strong>método STAR</strong>.</li>
+              <li class="flex gap-3"><i data-lucide="check" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Optimización de perfil, CV y presencia profesional.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROGRAMA / MÓDULOS
+         ============================================================ -->
+    <section id="programa" class="py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-indigo">El programa</p>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Un sistema completo, no clases sueltas
+          </h2>
+          <p class="mt-4 text-lg text-slate-400">
+            Cuatro módulos que cubren todo el ciclo de una postulación: desde tu perfil hasta la oferta final.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2">
+          <!-- Módulo 1 -->
+          <article class="group rounded-2xl border border-white/10 bg-slate-900/40 p-8 transition hover:border-brand-indigo/40 hover:bg-slate-900/70">
+            <div class="flex items-start justify-between">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-indigo/15 text-brand-indigo"><i data-lucide="file-user" class="h-6 w-6"></i></span>
+              <span class="text-sm font-bold text-slate-600">01</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Optimización de CV Técnico y Perfil en Inglés</h3>
+            <p class="mt-3 text-slate-400">
+              Reescribimos tu CV y LinkedIn con lenguaje de impacto orientado a resultados, keywords ATS y
+              posicionamiento para reclutadores internacionales.
+            </p>
+          </article>
+
+          <!-- Módulo 2 -->
+          <article class="group rounded-2xl border border-white/10 bg-slate-900/40 p-8 transition hover:border-brand-indigo/40 hover:bg-slate-900/70">
+            <div class="flex items-start justify-between">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-indigo/15 text-brand-indigo"><i data-lucide="library-big" class="h-6 w-6"></i></span>
+              <span class="text-sm font-bold text-slate-600">02</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Bóveda de Plantillas y Guiones de Respuesta</h3>
+            <p class="mt-3 text-slate-400">
+              Frameworks probados para responder las preguntas más comunes: introducciones, trade-offs,
+              conflictos de equipo y negociación salarial en inglés.
+            </p>
+          </article>
+
+          <!-- Módulo 3 -->
+          <article class="group rounded-2xl border border-white/10 bg-slate-900/40 p-8 transition hover:border-brand-indigo/40 hover:bg-slate-900/70">
+            <div class="flex items-start justify-between">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-indigo/15 text-brand-indigo"><i data-lucide="messages-square" class="h-6 w-6"></i></span>
+              <span class="text-sm font-bold text-slate-600">03</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Simulaciones 1 a 1 (Mock Interviews)</h3>
+            <p class="mt-3 text-slate-400">
+              Entrevistas técnicas y <em>behavioral</em> en vivo con feedback inmediato sobre fluidez,
+              claridad, estructura y comunicación bajo presión.
+            </p>
+          </article>
+
+          <!-- Módulo 4 -->
+          <article class="group rounded-2xl border border-white/10 bg-slate-900/40 p-8 transition hover:border-brand-indigo/40 hover:bg-slate-900/70">
+            <div class="flex items-start justify-between">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-indigo/15 text-brand-indigo"><i data-lucide="life-buoy" class="h-6 w-6"></i></span>
+              <span class="text-sm font-bold text-slate-600">04</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Soporte Asíncrono para Entrevistas Reales</h3>
+            <p class="mt-3 text-slate-400">
+              Acompañamiento entre sesiones: revisamos tus entrevistas activas, preparamos rondas específicas
+              y ajustamos la estrategia según cada empresa.
+            </p>
+          </article>
+        </div>
+
+        <!-- Audiencia -->
+        <div class="mt-14 rounded-2xl border border-white/10 bg-slate-900/40 p-8">
+          <p class="text-center text-sm font-semibold uppercase tracking-widest text-slate-500">Diseñado para profesionales de tecnología en Latinoamérica</p>
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200">Software Engineers</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200">Developers</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200">Data Scientists</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200">Product Managers</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200">DevOps Engineers</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRECIOS / INVERSIÓN
+         ============================================================ -->
+    <section id="planes" class="border-y border-white/5 bg-slate-900/30 py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-indigo">Inversión</p>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Planes claros y transparentes</h2>
+          <p class="mt-4 text-lg text-slate-400">
+            Precios en USD. Pago único y seguro. Sin cargos ocultos ni suscripciones automáticas.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-14 grid max-w-4xl items-start gap-6 md:grid-cols-2">
+          <!-- Plan 1 -->
+          <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-8">
+            <h3 class="text-lg font-bold text-white">Intensive Interview Prep</h3>
+            <p class="mt-1 text-sm text-slate-400">Enfoque acelerado para una búsqueda activa.</p>
+            <div class="mt-6 flex items-end gap-1">
+              <span class="text-5xl font-extrabold text-white">$450</span>
+              <span class="mb-1.5 text-slate-400">USD</span>
+            </div>
+            <p class="mt-1 text-sm text-slate-500">Pago único &middot; 4 semanas</p>
+
+            <ul class="mt-6 space-y-3.5 text-slate-300">
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Programa intensivo de <strong>4 semanas</strong></li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Sesiones 1 a 1 de mock interviews</li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Bóveda de plantillas y guiones</li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Feedback estructurado por sesión</li>
+            </ul>
+
+            <a href="mailto:hola@tu-dominio.com?subject=Postulación%20—%20Intensive%20Interview%20Prep"
+               class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
+              Postular a este plan
+            </a>
+            <p class="mt-4 flex items-center justify-center gap-2 text-xs text-slate-500">
+              <i data-lucide="lock" class="h-3.5 w-3.5"></i> Pago seguro con Stripe, PayPal o tarjeta
+            </p>
+          </div>
+
+          <!-- Plan 2 (destacado) -->
+          <div class="relative rounded-2xl border border-brand-indigo/50 bg-gradient-to-b from-brand-indigo/10 to-transparent p-8 shadow-2xl shadow-indigo-500/10">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-indigo px-3 py-1 text-xs font-bold text-white">Más elegido</span>
+            <h3 class="text-lg font-bold text-white">Full Career Accelerator</h3>
+            <p class="mt-1 text-sm text-slate-400">Transformación completa de perfil y entrevistas.</p>
+            <div class="mt-6 flex items-end gap-1">
+              <span class="text-5xl font-extrabold text-white">$750</span>
+              <span class="mb-1.5 text-slate-400">USD</span>
+            </div>
+            <p class="mt-1 text-sm text-slate-500">Pago único &middot; 8 semanas</p>
+
+            <ul class="mt-6 space-y-3.5 text-slate-200">
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Programa completo de <strong>8 semanas</strong></li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> <strong>Todo lo del plan Intensive</strong>, ampliado</li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Optimización de CV y perfil en inglés</li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Módulos de System Design y STAR</li>
+              <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-brand-emerald"></i> Soporte asíncrono para entrevistas reales</li>
+            </ul>
+
+            <a href="mailto:hola@tu-dominio.com?subject=Postulación%20—%20Full%20Career%20Accelerator"
+               class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-indigo px-6 py-3.5 font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-500">
+              Postular al programa completo <i data-lucide="arrow-right" class="h-5 w-5"></i>
+            </a>
+            <p class="mt-4 flex items-center justify-center gap-2 text-xs text-slate-500">
+              <i data-lucide="lock" class="h-3.5 w-3.5"></i> Pago seguro con Stripe, PayPal o tarjeta
+            </p>
+          </div>
+        </div>
+
+        <p class="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-500">
+          ¿Necesitas facturación B2B para tu empresa o equipo? Escríbenos y preparamos una propuesta corporativa a medida.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GARANTÍA Y CUMPLIMIENTO
+         ============================================================ -->
+    <section class="py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-8 sm:p-12">
+          <div class="grid gap-10 md:grid-cols-[auto,1fr] md:items-center">
+            <div class="grid h-20 w-20 place-items-center rounded-2xl bg-brand-emerald/15 text-brand-emerald">
+              <i data-lucide="shield-check" class="h-10 w-10"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-extrabold text-white sm:text-3xl">Garantía de acompañamiento real</h2>
+              <p class="mt-3 text-slate-400">
+                Nos comprometemos con tu proceso, no solo con las sesiones. Si completas el programa y sigues
+                la metodología, continuamos acompañándote hasta que domines el formato de entrevista.
+                Trabajamos con expectativas claras, entregables definidos y una política de reembolso transparente.
+              </p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <i data-lucide="badge-check" class="h-5 w-5 text-brand-emerald"></i>
+                  <p class="mt-2 text-sm font-semibold text-white">Compromiso por escrito</p>
+                  <p class="text-xs text-slate-400">Alcance y entregables definidos.</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <i data-lucide="receipt" class="h-5 w-5 text-brand-emerald"></i>
+                  <p class="mt-2 text-sm font-semibold text-white">Factura y recibo</p>
+                  <p class="text-xs text-slate-400">Comprobante por cada pago.</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <i data-lucide="rotate-ccw" class="h-5 w-5 text-brand-emerald"></i>
+                  <p class="mt-2 text-sm font-semibold text-white">Política de reembolso</p>
+                  <p class="text-xs text-slate-400">Reglas claras y publicadas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ
+         ============================================================ -->
+    <section id="faq" class="border-t border-white/5 bg-slate-900/30 py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-indigo">Preguntas frecuentes</p>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Resolvemos tus dudas</h2>
+        </div>
+
+        <div class="mx-auto mt-12 max-w-3xl divide-y divide-white/5 rounded-2xl border border-white/10 bg-slate-950/40">
+          <!-- Cada item usa el mismo patrón; JS controla apertura -->
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿El programa es 100% remoto y online?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Sí. Todas las sesiones son 1 a 1 por videollamada, sin importar tu ubicación en Latinoamérica. Solo necesitas conexión estable y ganas de practicar.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿Qué nivel mínimo de inglés necesito?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Recomendamos un nivel intermedio (B1 o superior): puedes mantener una conversación básica pero te cuesta comunicar temas técnicos con fluidez. En la sesión de diagnóstico evaluamos tu punto de partida.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿Cuánto duran las sesiones y con qué frecuencia son?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Cada sesión 1 a 1 dura entre 45 y 60 minutos. La frecuencia habitual es de 1 a 2 sesiones por semana, coordinadas contigo según tu disponibilidad y la urgencia de tus entrevistas.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿Qué métodos de pago aceptan?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Aceptamos pagos seguros con tarjeta de crédito/débito a través de Stripe y PayPal. Todos los precios están en USD y recibes comprobante por cada transacción.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿Ofrecen reembolsos?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Sí, bajo las condiciones descritas en nuestra <a href="refund.html" class="text-brand-indigo underline underline-offset-2 hover:text-indigo-400">Política de Reembolso</a>. Queremos que tomes la decisión con total confianza y transparencia.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+              <span class="font-semibold text-white">¿Garantizan que me contraten?</span>
+              <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-panel"><p class="px-6 pb-5 text-slate-400">Ninguna formación seria puede garantizar una contratación, porque depende de muchos factores externos. Lo que sí garantizamos es un acompañamiento riguroso y que llegarás a tus entrevistas mucho mejor preparado y más seguro.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA FINAL
+         ============================================================ -->
+    <section class="py-20 lg:py-28">
+      <div class="container mx-auto">
+        <div class="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-indigo/20 via-slate-900 to-brand-emerald/10 p-10 text-center sm:p-16">
+          <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Tu próxima entrevista puede ser la definitiva</h2>
+          <p class="mx-auto mt-4 max-w-xl text-lg text-slate-300">
+            Agenda una sesión de diagnóstico gratuita, evaluamos tu nivel y diseñamos tu ruta hacia roles remotos globales.
+          </p>
+          <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href="#planes" class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-indigo px-6 py-3.5 font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-500">
+              Postular al Programa <i data-lucide="arrow-right" class="h-5 w-5"></i>
+            </a>
+            <a href="https://wa.me/10000000000?text=Hola%2C%20quiero%20agendar%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
+              <i data-lucide="message-circle" class="h-5 w-5"></i> Escribir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER  (importante para validación bancaria)
+       ============================================================ -->
+  <footer class="border-t border-white/5 bg-slate-950">
+    <div class="container mx-auto py-14">
+      <div class="grid gap-10 md:grid-cols-[1.5fr,1fr,1fr]">
+        <!-- Marca + datos legales -->
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-indigo to-brand-emerald font-black text-white">D</span>
+            <span class="text-lg font-extrabold text-white">Dev<span class="text-brand-indigo">Interview</span> Accelerator</span>
+          </div>
+          <p class="mt-4 max-w-sm text-sm text-slate-400">
+            Servicios de formación, coaching ejecutivo y consultoría lingüística personalizada para profesionales de tecnología.
+          </p>
+
+          <!-- REEMPLAZAR con tus datos legales reales -->
+          <dl class="mt-6 space-y-1.5 text-sm text-slate-500">
+            <div><dt class="inline font-semibold text-slate-400">Razón social:</dt> <dd class="inline">[Nombre legal de la empresa / profesional]</dd></div>
+            <div><dt class="inline font-semibold text-slate-400">ID fiscal:</dt> <dd class="inline">[RUC / NIT / EIN]</dd></div>
+            <div><dt class="inline font-semibold text-slate-400">Domicilio:</dt> <dd class="inline">[Ciudad, País]</dd></div>
+          </dl>
+        </div>
+
+        <!-- Navegación -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Navegación</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-400">
+            <li><a href="#programa" class="hover:text-white">Programa</a></li>
+            <li><a href="#metodologia" class="hover:text-white">Metodología</a></li>
+            <li><a href="#planes" class="hover:text-white">Planes</a></li>
+            <li><a href="#faq" class="hover:text-white">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto + legal -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Contacto</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-400">
+            <li><a href="mailto:hola@tu-dominio.com" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="mail" class="h-4 w-4"></i> hola@tu-dominio.com</a></li>
+            <li><a href="https://wa.me/10000000000" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp Business</a></li>
+          </ul>
+          <h3 class="mt-6 text-sm font-semibold uppercase tracking-widest text-slate-400">Legal</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-400">
+            <li><a href="terms.html" class="hover:text-white">Términos y Condiciones</a></li>
+            <li><a href="privacy.html" class="hover:text-white">Política de Privacidad</a></li>
+            <li><a href="refund.html" class="hover:text-white">Política de Reembolso</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-sm text-slate-500 sm:flex-row">
+        <p>&copy; 2026 [Nombre legal de la empresa / profesional]. Todos los derechos reservados.</p>
+        <p class="flex items-center gap-2"><i data-lucide="lock" class="h-4 w-4"></i> Pagos procesados de forma segura por Stripe y PayPal</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    // Render de iconos
+    if (window.lucide) lucide.createIcons();
+
+    // --- Menú móvil ---
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    // Cerrar el menú al hacer clic en un enlace
+    mobileMenu?.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      })
+    );
+
+    // --- Acordeón FAQ (accesible) ---
+    document.querySelectorAll('.faq-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const panel = btn.parentElement.querySelector('.faq-panel');
+        const chevron = btn.querySelector('.faq-chevron');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Cerrar el resto (comportamiento de acordeón)
+        document.querySelectorAll('.faq-trigger').forEach((other) => {
+          if (other !== btn) {
+            other.setAttribute('aria-expanded', 'false');
+            other.parentElement.querySelector('.faq-panel').style.maxHeight = null;
+            other.querySelector('.faq-chevron')?.classList.remove('rotate-180');
+          }
+        });
+
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
+        chevron?.classList.toggle('rotate-180', !isOpen);
+      });
+    });
+  </script>
+</body>
+</html>

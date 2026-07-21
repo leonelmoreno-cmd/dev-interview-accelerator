@@ -1,0 +1,20 @@
+# Dependencias (no aplican en este proyecto estático, pero por si acaso)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Variables de entorno
+.env
+.env.local
